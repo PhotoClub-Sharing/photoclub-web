@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "./layout";
 import { collection, getDocs } from "firebase/firestore"; 
 
-export default await function Photos() {
+export default async function Photos() {
   const querySnapshot = await getDocs(collection(db, "albums"));
     querySnapshot.forEach((doc) => {
     var albums: array = [doc.data];
