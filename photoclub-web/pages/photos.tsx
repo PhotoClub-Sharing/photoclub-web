@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 
 export default async function Photos() {
   const querySnapshot = await getDocs(collection(db, "albums"));
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach((doc) => ({
     var albums: array = [doc.data];
     if albums.length < 1 {
       return(
