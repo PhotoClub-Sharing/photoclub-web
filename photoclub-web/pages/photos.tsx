@@ -7,10 +7,11 @@ export default async function Photos() {
     querySnapshot.forEach((doc) => {
     var albums: array = [doc.data];
     if albums.length < 1 {
-      return <p>No albums found</p>
-    }
-});
-
+      return(
+        <p>No albums found</p>
+      )
+    };
+  });
   return (
     <Layout>
     <div>
