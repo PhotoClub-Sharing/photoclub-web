@@ -22,10 +22,10 @@ export default async function Photos() {
 
   return (
     <Layout>
-    <div>
-      <h1>Albums</h1>
+      <div>
+    <h1>Albums</h1>
       <ul>
-        {albums.map((album) => (
+        {albumData.map((album) => (
           <li key={album.id}>
             <span>{album.name}</span>
             <span>{album.owner}</span>
