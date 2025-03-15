@@ -1,27 +1,28 @@
 import Image from "next/image";
 import { firebaseSecrets } from "secrets.ts" 
-export default function Home() {
 // Import the functions you need from the SDKs you need
-  import { initializeApp } from "firebase/app";
-  import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBBU9OvJ15hPXmQU0JDUykSIeNgHsatKzc",
-    authDomain: "photoclub-281c2.firebaseapp.com",
-    projectId: "photoclub-281c2",
-    storageBucket: "photoclub-281c2.firebasestorage.app",
-    messagingSenderId: "60265097004",
-    appId: "1:60265097004:web:afc557220ee747a5e7ee89",
-    measurementId: "G-NN51Y5620H"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyBBU9OvJ15hPXmQU0JDUykSIeNgHsatKzc",
+  authDomain: "photoclub-281c2.firebaseapp.com",
+  projectId: "photoclub-281c2",
+  storageBucket: "photoclub-281c2.firebasestorage.app",
+  messagingSenderId: "60265097004",
+  appId: "1:60265097004:web:afc557220ee747a5e7ee89",
+  measurementId: "G-NN51Y5620H"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
