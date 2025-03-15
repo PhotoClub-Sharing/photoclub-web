@@ -1,18 +1,23 @@
 import React from "react";
 import Layout from "./layout";
 import { collection, getDocs } from "firebase/firestore"; 
-
 export default async function Photos() {
-  const querySnapshot = await getDocs(collection(db, "albums"));
-  const albums = [];
-
+  const [albums, setAlbums] = React.useState([]);
+  
+  React.useEffect(() => {
+    const fetchAlbums = async () => {
+      const querySnapshot = await getDocs(collection(db, "albums"));
+      const albumsData = [];
+    };
+    fetchAlbums();
+  }, []);
   querySnapshot.forEach((doc) => {
-    albums.push(doc.data());
+    albumsData.push(doc.data());
   });
 
-//  if (albums.length < 1) {
- //   return <p>No albums found</p>;
-  //}
+  if (albums.length < 1) {
+    return <p>No albums found</p>;
+  }
   
 
   return (
