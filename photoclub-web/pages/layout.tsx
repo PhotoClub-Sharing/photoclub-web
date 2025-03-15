@@ -1,5 +1,8 @@
 import "./globals.css";
-
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getStorage, ref } from "firebase/storage";
 export default function Layout({
   children,
 }: Readonly<{
@@ -26,6 +29,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const storage = getStorage(app);
 const picRef = ref(storage, 'photos');
+  const db = getFirestore(app);
   return (
     <html lang="en">
       <body>
