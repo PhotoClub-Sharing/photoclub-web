@@ -1,8 +1,12 @@
+'use client'
+
 import Image from "next/image";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+import { getStorage, ref } from "firebase/storage";
+import { useState } from "react";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,8 +26,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const storage = getStorage(app);
-
+const picRef = ref(storage, 'photos');
 export default function Home() {
+  const Download = () => {
+    console.log("Code for downloading photos goes here");
+  }
+  const Login = () => {
+    console.log("Code for login goes here");
+  }
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 align-content-center gap-16 sm:p-20 font-[family-name:var(--font-lilita-one)] bg-[#FFBC51]">
       <main className="flex flex-col gap-[32px] row-start-2 align-items-center items-center sm:items-start justify-content-center">
@@ -35,9 +45,12 @@ export default function Home() {
           height={76}
           priority
         /> 
-         <div className="bg-orange-200 hover:bg-orange-600 text-orange-600 hover:text-white font-bold py-2 px-4 rounded">
+         <button className="bg-orange-200 hover:bg-orange-600 text-orange-600 hover:text-white font-bold py-2 px-4 rounded" onClick={Download}>
           <a href="#">Download Photos</a> 
-        </div>
+        </button>
+        <button className="bg-orange-600 hover:bg-orange-400 text-white hover:text-white font-bold py-2 px-4 rounded" onClick={Login}>
+          <p>Login</p>
+        </button>
       </main>
     </div>
   );
