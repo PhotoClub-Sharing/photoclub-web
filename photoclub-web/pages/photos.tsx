@@ -8,13 +8,11 @@ export default async function Photos() {
     const fetchAlbums = async () => {
       const querySnapshot = await getDocs(collection(db, "albums"));
       const albumsData = [];
+      querySnapshot.forEach((doc) => {
+        albumsData.push(doc.data());
+      });
     };
     fetchAlbums();
-  }, []);
-  querySnapshot.forEach((doc) => {
-    albumsData.push(doc.data());
-  });
-
   if (albums.length < 1) {
     return <p>No albums found</p>;
   }
