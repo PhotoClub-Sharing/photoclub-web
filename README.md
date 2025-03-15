@@ -1,4 +1,4 @@
-# Website for my team's hackathon app (so fur unnamed)
+# Website for my team's hackathon app (so far unnnamed)
 
 ## What Hackathon?
 This is for the photosharing app my team made for the hackathon Scrapyard, run by Hack Club in 2025.
