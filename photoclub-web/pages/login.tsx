@@ -1,4 +1,5 @@
 import Layout from './layout';
+import Link from 'next/link';
 export default function Login() {
   const GoogleLogin = () => {
     console.log("Google Login");
@@ -16,6 +17,10 @@ export default function Login() {
       <button className="px-4 py-2 mt-4 bg-white text-black rounded-md" onClick={GoogleLogin}>Continue with Google</button>
       <button className="px-4 py-2 mt-4 bg-black text-white rounded-md" onClick={AppleLogin}>Continue with Apple</button>
       <button className="px-4 py-2 mt-4 bg-orange-600 rounded-md" onClick={GuestLogin}>Continue as Guest</button>
+      <button className="px-4 py-2 mt-4 bg-orange-600 rounded-md">
+      <Link href="/">
+      <a>Back to Home</a>
+      </button>
     </div>
     </Layout>
   );
