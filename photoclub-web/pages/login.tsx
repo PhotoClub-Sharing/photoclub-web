@@ -18,8 +18,7 @@ export default function Login() {
       <button className="px-4 py-2 mt-4 bg-black text-white rounded-md" onClick={AppleLogin}>Continue with Apple</button>
       <button className="px-4 py-2 mt-4 bg-orange-600 rounded-md" onClick={GuestLogin}>Continue as Guest</button>
       <button className="px-4 py-2 mt-4 bg-orange-600 rounded-md">
-      <Link href="/">
-      <a>Back to Home</a>
+      <Link href="/">Back to Home</Link>
       </button>
     </div>
     </Layout>
