@@ -25,7 +25,7 @@ export default async function Photos() {
             <span>{album.name}</span>
             <span>{album.owner}</span>
           </li>
-        ))} 
+        ))}; 
     </div>
     </Layout>
   );
