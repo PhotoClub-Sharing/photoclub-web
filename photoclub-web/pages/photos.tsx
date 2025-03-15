@@ -10,9 +10,9 @@ export default async function Photos() {
     albums.push(doc.data());
   });
 
-  if (albums.length < 1) {
-    return <p>No albums found</p>;
-  }
+//  if (albums.length < 1) {
+ //   return <p>No albums found</p>;
+  //}
   
 
   return (
