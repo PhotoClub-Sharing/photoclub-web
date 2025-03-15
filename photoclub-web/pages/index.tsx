@@ -25,7 +25,7 @@ export default function Home() {
           priority
         /> 
          <button className="bg-orange-600 hover:bg-orange-400 text-white hover:text-white font-bold py-2 px-4 rounded" onClick={Download}>
-          <a href="#">Download Photos</a> 
+          <Link href="/photos">Download Photos</Link> 
         </button>
         <button className="bg-orange-600 hover:bg-orange-400 text-white hover:text-white font-bold py-2 px-4 rounded">
           <Link href="/login">Login</Link>
