@@ -4,14 +4,17 @@ import { collection, getDocs } from "firebase/firestore";
 
 export default async function Photos() {
   const querySnapshot = await getDocs(collection(db, "albums"));
-    querySnapshot.forEach((doc) => ({
-    public var albums: array = [doc.data];
-    if albums.length < 1 {
-      return(
-        <p>No albums found</p>
-      )
-    };
+  const albums = [];
+
+  querySnapshot.forEach((doc) => {
+    albums.push(doc.data());
   });
+
+  if (albums.length < 1) {
+    return <p>No albums found</p>;
+  }
+  
+
   return (
     <Layout>
     <div>
