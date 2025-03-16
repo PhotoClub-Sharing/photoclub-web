@@ -1,38 +1,47 @@
+'use server'
 import React from "react";
 import Layout from "./layout";
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, query, getDocs } from "firebase/firestore"; 
 export default async function Photos() {
-  const [albums, setAlbums] = React.useState([]);
-  
-  React.useEffect(() => {
-    const fetchAlbums = async () => {
-      const querySnapshot = await getDocs(collection(db, "Albums"));
-      const albumsData = [];
+  const albumData = []; 
+    async function fetchAlbums() {
+      const q = query(collection(db, "Albums"));
+      const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        albumsData.push(doc.data());
+        albumData.push(doc.data());
       });
+      return albumsData;
     };
-    fetchAlbums();
+  async function refreshAlbums() { 
+    const albums = fetchAlbums();
+    if (albums.length < 1) {
+      return <p>No albums found</p>;
+  
+      const albums = fetchAlbums();
   if (albums.length < 1) {
     return <p>No albums found</p>;
   }
-  
 
   return (
     <Layout>
       <div>
-    <h1>Albums</h1>
-      <ul>
-        {albumData.map((album) => (
-          <li key={album.code}>
+        <button 
+          className="px-4 py-2 mt-4 bg-white text-black rounded-md"
+          onClick={refreshAlbums}>
+          Refresh Albums
+        </button>
+        <ul>
+          {albumData.map((album) => (
+            <li key={album.code}>
             <div>
               <Image src={album.thumbnailURL} alt={album.name} />
               <span>{album.name}</span>
-              <span>{album.owner}</span>
+              <span>owned by {album.owner}</span>
             </div> 
-          </li>
-        ))}; 
+            </li>
+          ))};
+        </ul>
     </div>
-    </Layout>
-  );
+  </Layout>
+    );
 }
