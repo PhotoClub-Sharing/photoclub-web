@@ -6,14 +6,14 @@ import FetchAlbums from "./fetchAlbums";
 
 export default function Photos() {
   const db = FirebaseInit();
-  const [albums, setAlbums] = useState([]);
   const [code, setCode] = useState("");
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
     const getAlbums = async () => {
       const albumList = await FetchAlbums();
-      setAlbums(albumList);
+      albumList.forEach((album) => {
+      console.log(album.code);
     };
     getAlbums();
     setIsHydrated(true);
