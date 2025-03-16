@@ -6,7 +6,7 @@ export default async function Photos() {
   
   React.useEffect(() => {
     const fetchAlbums = async () => {
-      const querySnapshot = await getDocs(collection(db, "albums"));
+      const querySnapshot = await getDocs(collection(db, "Albums"));
       const albumsData = [];
       querySnapshot.forEach((doc) => {
         albumsData.push(doc.data());
@@ -24,9 +24,12 @@ export default async function Photos() {
     <h1>Albums</h1>
       <ul>
         {albumData.map((album) => (
-          <li key={album.id}>
-            <span>{album.name}</span>
-            <span>{album.owner}</span>
+          <li key={album.code}>
+            <div>
+              <Image src={album.thumbnailURL} alt={album.name} />
+              <span>{album.name}</span>
+              <span>{album.owner}</span>
+            </div> 
           </li>
         ))}; 
     </div>
