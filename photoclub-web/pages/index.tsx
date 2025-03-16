@@ -4,13 +4,6 @@ import Layout from './layout';
 import { useState } from "react";
 
 export default function Home() {
-  const [isHydrated, setIsHydrated] = useState(false);
-
-
-
-  if (!isHydrated) {
-    return null; // Ensure the client and server render the same initial markup
-  }
 
   return (
     <Layout>
