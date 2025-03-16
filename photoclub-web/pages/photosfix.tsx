@@ -12,7 +12,7 @@ export default function Photos() {
 
   useEffect(() => {
     const getAlbums = async () => {
-      const albumList = await FetchAlbums(db);
+      const albumList = await FetchAlbums();
       setAlbums(albumList);
     };
     getAlbums();
