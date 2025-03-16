@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from 'next/link';
 import Layout from './layout';
-
+import { useState } from "react";
 
 export default function Home() {
   const [isHydrated, setIsHydrated] = useState(false);
