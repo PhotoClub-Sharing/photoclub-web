@@ -18,13 +18,13 @@ export default function Photos() {
     getAlbums();
   }, [db]);
 
-  const checkCode = (e) => {
+  const checkCode = async (e) => {
     e.preventDefault();
     const album = albums.find((album) => album.code === code);
     if (album) {
       const albumid = album.id;
-      const url = DownloadAlbums(albumid);
-      setDownloadUrl(url);
+
+
     } else {
       alert("Album not found");
     }
@@ -45,12 +45,7 @@ export default function Photos() {
             Submit
           </button>
         </form>
-        {downloadUrl && (
-          <div>
-            <a href={downloadUrl} download className="w-full p-2 mb-4 text-white bg-orange-500 rounded-lg">
-              Download Album
-            </a>
-          </div>
+
         )}
       </div>
     </Layout>
