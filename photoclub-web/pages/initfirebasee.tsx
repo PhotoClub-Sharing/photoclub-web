@@ -24,6 +24,12 @@ const storage = getStorage(app);
 const picRef = ref(storage, 'images');
 const db = getFirestore(app);
 return db;
+  function Storage(){
+    return Storage;
+    function PicRef(){
+      return picRef;
+    }
+  }
 };
 
 

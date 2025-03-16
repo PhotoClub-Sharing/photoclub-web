@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Layout from "./layout";
 import FirebaseInit from "./initfirebasee";
-import FetchAlbums from "./fetchAlbums";
-import { DownloadAlbums } from "./fetchAlbums";
+import FetchAlbums, { DownloadAlbums } from "./fetchAlbums";
+
 export default function Photos() {
   const db = FirebaseInit();
   const [albums, setAlbums] = useState([]);
   const [code, setCode] = useState("");
+  const [downloadUrl, setDownloadUrl] = useState("");
 
   useEffect(() => {
     const getAlbums = async () => {
       const albumList = await FetchAlbums(db);
       setAlbums(albumList);
-      const albumid = albumList.map((album) => album.id);
     };
     getAlbums();
   }, [db]);
@@ -22,13 +22,9 @@ export default function Photos() {
     e.preventDefault();
     const album = albums.find((album) => album.code === code);
     if (album) {
-      albumid = album.id;
-      return (
-      <div>
-        <button onClick={DownloadAlbums(albumid)}>Download Album</button>
-        {const url = DownloadAlbums(albumid)}
-        <a href={url}>Download Album</a>
-      )
+      const albumid = album.id;
+      const url = DownloadAlbums(albumid);
+      setDownloadUrl(url);
     } else {
       alert("Album not found");
     }
@@ -49,14 +45,13 @@ export default function Photos() {
             Submit
           </button>
         </form>
-        {albums.map((album) => (
-          <div key={album.code} className="flex flex-col items-center justify-center w-full max-w-md p-8 mx-auto bg-white rounded-lg shadow-lg">
-            <h3>{album.name}</h3>
-            <Image src={album.thumbnailURL} alt={album.name} width={180} height={180} />
-            <p>Created on: {album.startDate}</p>
-            <p>Ended on: {album.endDate}</p>
+        {downloadUrl && (
+          <div>
+            <a href={downloadUrl} download className="w-full p-2 mb-4 text-white bg-orange-500 rounded-lg">
+              Download Album
+            </a>
           </div>
-        ))}
+        )}
       </div>
     </Layout>
   );
