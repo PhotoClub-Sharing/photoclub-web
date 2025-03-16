@@ -23,6 +23,5 @@ const auth = getAuth(app);
 const storage = getStorage(app);
 const picRef = ref(storage, 'images');
 const db = getFirestore(app);
-return db;
 };
 
