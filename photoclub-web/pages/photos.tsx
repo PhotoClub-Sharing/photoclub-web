@@ -1,10 +1,22 @@
 'use server'
 import React from "react";
 import Layout from "./layout";
-import { collection, query, getDocs } from "firebase/firestore"; 
+import { collection, query, getDocs, getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 export default async function Photos() {
   const albumData = []; 
-    async function fetchAlbums() {
+  async function fetchAlbums() {
       const q = query(collection(db, "Albums"));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
@@ -12,24 +24,14 @@ export default async function Photos() {
       });
       return albumsData;
     };
-  async function refreshAlbums() { 
-    const albums = fetchAlbums();
-    if (albums.length < 1) {
-      return <p>No albums found</p>;
-  
-      const albums = fetchAlbums();
-  if (albums.length < 1) {
+  await fetchAlbums();
+  if (albumsData.length < 1) {
     return <p>No albums found</p>;
   }
 
   return (
     <Layout>
       <div>
-        <button 
-          className="px-4 py-2 mt-4 bg-white text-black rounded-md"
-          onClick={refreshAlbums}>
-          Refresh Albums
-        </button>
         <ul>
           {albumData.map((album) => (
             <li key={album.code}>

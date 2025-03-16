@@ -22,12 +22,12 @@ export default function Layout({
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBBU9OvJ15hPXmQU0JDUykSIeNgHsatKzc",
-  authDomain: "photoclub-281c2.firebaseapp.com",
-  projectId: "photoclub-281c2",
-  storageBucket: "photoclub-281c2.firebasestorage.app",
-  messagingSenderId: "60265097004",
-  appId: "1:60265097004:web:afc557220ee747a5e7ee89",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: "G-NN51Y5620H"
 };
 

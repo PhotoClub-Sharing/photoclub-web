@@ -14,7 +14,7 @@ export default function Home() {
           height={76}
           priority
         /> 
-         <button className="bg-orange-600 hover:bg-orange-400 text-white hover:text-white font-bold py-2 px-4 rounded" onClick={Download}>
+         <button className="bg-orange-600 hover:bg-orange-400 text-white hover:text-white font-bold py-2 px-4 rounded">
           <Link href="/photos">Download Photos</Link> 
         </button>
         <button className="bg-orange-600 hover:bg-orange-400 text-white hover:text-white font-bold py-2 px-4 rounded">
