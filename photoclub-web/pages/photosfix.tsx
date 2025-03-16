@@ -18,10 +18,13 @@ export default function Photos() {
     getAlbums();
     setIsHydrated(true);
   }, [db]);
+  albums.forEach((album) => {
+    console.log(album.name);
+  });
 
   const checkCode = (e) => {
     e.preventDefault();
-    const album = albums.find((album) => album.code === code);
+    const album = albums.find((album) => album.albumCode === code);
     if (album) {
       alert(`Album found: ${album.name}`);
     } else {
